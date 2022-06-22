@@ -3,6 +3,7 @@ import './App.css';
 import 'antd/dist/antd.css'
 import Title from './components/layout/Title';
 import AddPerson from './components/forms/AddPerson';
+import People from './components/lists/People';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -15,6 +16,7 @@ function App() {
       <div className="App">
         <Title />
         <AddPerson />
+        <People />
       </div>
     </ApolloProvider>
   );
