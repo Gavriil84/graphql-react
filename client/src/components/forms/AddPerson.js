@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { ADD_PERSON, GET_PEOPLE } from '../../queries'
 
 const AddPerson = () => {
-    const [id] = useState(uuidv4())
+    const [id, setId] = useState(uuidv4())
     const [addPerson] = useMutation(ADD_PERSON)
     const [form] = Form.useForm()
     const [, forceUpdate] = useState()
@@ -30,6 +30,8 @@ const AddPerson = () => {
                 })
             }
         })
+
+        setId(uuidv4())
     }
 
     useEffect(() => {
