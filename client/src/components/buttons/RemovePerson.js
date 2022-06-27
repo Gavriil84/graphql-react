@@ -11,13 +11,15 @@ const RemovePerson = props => {
             const { people } = cache.readQuery({ query: GET_PEOPLE })
             cache.writeQuery({
                 query: GET_PEOPLE,
-                data: filter(people, person => person.id !== deletePerson.id)
+                data: {
+                    people: filter(people, person => person.id !== deletePerson.id)
+                }
             })
         }
     })
 
     const handleButtonClick = () => {
-        let result = window.confirm('Are you sure you want to delete this person?')
+        let result = window.confirm('Are you sure you want to remove this contact?')
 
         if (result) {
             removePerson({
