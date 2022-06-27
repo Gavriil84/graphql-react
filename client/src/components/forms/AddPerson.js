@@ -58,7 +58,7 @@ const AddPerson = () => {
                         type='primary'
                         htmlType='submit'
                         disabled={!form.isFieldsTouched(true) || form.getFieldsError().filter(({ errors }) => errors.length).length}
-                    >Add Contact</Button>
+                    >Add Person</Button>
                 )}
             </Form.Item>
         </Form>
