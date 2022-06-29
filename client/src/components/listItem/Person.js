@@ -8,8 +8,8 @@ import { GET_CARS } from '../../queries'
 import Car from './Car'
 const getStyles = () => ({
     card: {
-        width: '500px',
-        fontSize: '30px'
+        width: '550px',
+        fontSize: '30px',
     }
 })
 
