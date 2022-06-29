@@ -53,21 +53,21 @@ const AddCar = () => {
             name='add-car-form'
             layout='inline'
             size='large'
-            style={{ margin: '40px' }}
+            style={{ width: '800px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', margin: '40px' }}
             onFinish={onFinish}>
 
             <Form.Item
-                name='year' rules={[{ required: true, message: 'Please input year!' }]}>
+                name='year' rules={[{ required: true, message: 'Please input year!' }]} style={{ marginBottom: '20px' }}>
                 <Input placeholder='2022' />
             </Form.Item>
 
             <Form.Item
-                name='make' rules={[{ required: true, message: 'Please input a maker!' }]}>
+                name='make' rules={[{ required: true, message: 'Please input a maker!' }]} style={{ marginBottom: '20px' }}>
                 <Input placeholder='Toyota' />
             </Form.Item>
 
             <Form.Item
-                name='model' rules={[{ required: true, message: 'Please input a model!' }]}>
+                name='model' rules={[{ required: true, message: 'Please input a model!' }]} style={{ marginBottom: '20px' }}>
                 <Input placeholder='Prius' />
             </Form.Item>
 
