@@ -54,7 +54,7 @@ const Car = props => {
             {
                 isEditing ? (
                     <UpdateCar
-                        id={props.id}
+                        id={props.carId}
                         year={props.year}
                         make={props.make}
                         model={props.model}
