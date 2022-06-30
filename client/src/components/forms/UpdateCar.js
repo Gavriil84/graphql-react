@@ -1,12 +1,13 @@
 import { useMutation, useQuery } from '@apollo/client'
 import { Button, Form, Input, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { GET_PEOPLE, UPDATE_CAR } from '../../queries'
+import { GET_CARS, GET_PEOPLE, UPDATE_CAR } from '../../queries'
+import { v4 as uuidv4 } from 'uuid'
 
 const { Option } = Select;
 
 const UpdateCar = props => {
-    const [id] = useState(props.id)
+    const [id, setId] = useState(props.id)
     const [year, setYear] = useState(props.year)
     const [make, setMake] = useState(props.make)
     const [model, setModel] = useState(props.model)
@@ -21,25 +22,6 @@ const UpdateCar = props => {
     useEffect(() => {
         forceUpdate({})
     }, [])
-
-    const onFinish = values => {
-        let { year, make, model, price, personId } = values
-        year = parseInt(year)
-        price = parseInt(price)
-
-        updateCar({
-            variables: {
-                id,
-                year,
-                make,
-                model,
-                price,
-                personId
-            }
-        })
-
-        props.onButtonClick()
-    }
 
     const updateStateVariable = (variable, value) => {
         props.updateStateVariable(variable, value)
@@ -62,6 +44,25 @@ const UpdateCar = props => {
             default:
                 break
         }
+    }
+
+    const onFinish = values => {
+        let { year, make, model, price, personId } = values
+        year = parseInt(year)
+        price = parseInt(price)
+
+        updateCar({
+            variables: {
+                id,
+                year,
+                make,
+                model,
+                price,
+                personId
+            },
+        })
+
+        props.onButtonClick()
     }
 
     return (
