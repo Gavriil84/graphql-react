@@ -6,6 +6,7 @@ import UpdatePerson from '../forms/UpdatePerson'
 import RemovePerson from '../buttons/RemovePerson'
 import { GET_CARS } from '../../queries'
 import Car from './Car'
+import { Link, NavLink } from 'react-router-dom'
 const getStyles = () => ({
     card: {
         width: '550px',
@@ -63,6 +64,7 @@ const Person = (props) => {
                         style={styles.card}
                     >
                         {firstName} {lastName}
+                        <Link style={{ marginLeft: '100px', fontSize: '16px' }} to={`/show/${id}/${firstName}/${lastName}`}>Learn more</Link>
                         {data.cars.map(({ id, year, make, model, price, personId }) => (
                             <Car type="inner" title={model} key={id} carId={id} id={props.id} year={year} make={make} model={model} price={price} personId={personId} />
                         ))}
