@@ -64,7 +64,7 @@ const UpdateCar = props => {
             form={form}
             name='update-car-form'
             layout='inline'
-            onfinish={onFinish}
+            onFinish={onFinish}
             initialValues={{
                 year: year,
                 make: make,
