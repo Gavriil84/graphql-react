@@ -1,7 +1,9 @@
-import { useMutation } from '@apollo/client'
-import { Button, Form, Input } from 'antd'
+import { useMutation, useQuery } from '@apollo/client'
+import { Button, Form, Input, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { UPDATE_CAR } from '../../queries'
+import { GET_PEOPLE, UPDATE_CAR } from '../../queries'
+
+const { Option } = Select;
 
 const UpdateCar = props => {
     const [id] = useState(props.id)
@@ -11,6 +13,7 @@ const UpdateCar = props => {
     const [price, setPrice] = useState(props.price)
     const [personId, setPersonId] = useState(props.personId)
     const [updateCar] = useMutation(UPDATE_CAR)
+    const { data } = useQuery(GET_PEOPLE)
 
     const [form] = Form.useForm()
     const [, forceUpdate] = useState()
@@ -20,7 +23,9 @@ const UpdateCar = props => {
     }, [])
 
     const onFinish = values => {
-        const { year, make, model, price, personId } = values
+        let { year, make, model, price, personId } = values
+        year = parseInt(year)
+        price = parseInt(price)
 
         updateCar({
             variables: {
@@ -94,8 +99,11 @@ const UpdateCar = props => {
             </Form.Item>
             <Form.Item
                 name='personId' rules={[{ required: true, message: 'Please enter a personId' }]}>
-                <Input placeholder='12345'
-                    onChange={e => updateStateVariable('personId', e.target.value)} />
+                <Select placeholder='Select a person' style={{ width: 200 }}>
+                    {data ? data.people.map(person =>
+                        <Option key={person.id} value={String(person.id)}>{person.firstName} {person.lastName}</Option>
+                    ) : null}
+                </Select>
             </Form.Item>
             <Form.Item shouldUpdate={true}>
                 {() => (
